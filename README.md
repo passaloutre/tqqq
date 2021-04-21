@@ -25,6 +25,7 @@ TODO
 
    * smaller par1 and par3 lead to shorter average hold times
      - it might be worth looking into whether TQQQ and VXN need different MACD parameters
+     - larger par1 and par3 minimize gainz :(
 
 2. Maybe it's better to find someone else who has already come up with a backtesting model
 
