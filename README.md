@@ -30,3 +30,5 @@ TODO
      - each day look at indicators from previous day close, determine if buy/sell
      - buy/sell at today's open price
      - keep up with how much $$$ in account, how many shares, and share value
+
+3. Might be good to modularize the algorithm and the backtesting model rather than one script?
