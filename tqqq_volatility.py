@@ -10,11 +10,11 @@ sns.set_theme()
 plt.close('all')
 #%% parameters
 
-start_date = '2021-01-01'
+start_date = '2012-01-01'
 end_date = '2022-01-01'
 
 par1 = 2
-par2 = 23
+par2 = 18
 par3 = 2
 
 start_money = 1000
@@ -94,6 +94,9 @@ model['worth'] = model.value + model.balance # net worth each day
 initial = start_money//price[0]
 model['hodl'] = price*initial + start_money - price[0]*initial # if stock was bought on day one and held
 
+algo_gain = model.worth[-1] - model.worth[0]
+hodl_gain = model.hodl[-1] - model.hodl[0]
+
 net = model.worth[-1] - model.hodl[-1]
 print('{:.0f}'.format(net))
 
@@ -112,7 +115,7 @@ for i in range(len(buy_times)):
     ax1.axvspan(buy_times[i,0], buy_times[i,1], facecolor='g', alpha=0.2)
 plt.legend(loc=2)
 ax1b.xaxis.set_major_formatter(mdates.DateFormatter(''))
-plt.title('Gain: ${:,}\n${:,} over HODL\nAvg. Hold Time: {} days'.format(int(model.worth[-1]-model.worth[0]),int(net),int(days)))
+plt.title('ALGO Gain: ${:,.2f}\nHODL Gain: ${:,.2f}\nAvg. Hold Time: {:.1f} days'.format(algo_gain, hodl_gain, days))
 
 
 ax2 = plt.subplot(4, 1, 2)
