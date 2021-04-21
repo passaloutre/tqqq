@@ -14,6 +14,7 @@ TODO
 
    * they're a lot to keep up with if manually trading
      - brokers that offer APIs for trading (etrade, robinhood) require 2FA, so automated trading isn't 100% automated
+     - automating 1000s of dollars in a risky investment just makes me nervous anyways
 
    * you can get in trouble for trading too many times in a single week
 
