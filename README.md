@@ -3,6 +3,10 @@ trading strategy for minimizing downside with TQQQ
 
 Most of this was cobbled together from various stackoverflow examples
 
+tqqq_volatility.py is the main idea
+
+tqqq_optimizer.py is dumb and needs work (or it has served its purpose and we can just ignore it)
+
 TODO
 1. I'd like to find a way to eliminate the single-day holds
 
