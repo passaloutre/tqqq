@@ -30,4 +30,12 @@ TODO
      - keep up with how much $$$ in account, how many shares, and share value
 3. Might be good to modularize the algorithm and the backtesting model rather than one script?
 4. Would love to deploy to a web server to send me daily emails with graphs and shit
-5. STRETCH GOAL: STOCK TRADING DART BOARD
+5. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
+   * SQQQ attempts to INVERSE TRIPLE QQQ (i.e. QQQ down 1%, SQQQ up 3%)
+7. STRETCH GOAL: STOCK TRADING DART BOARD
+
+Further Inspiration
+This is an approach to long-term holding UPRO (like TQQQ but for the whole SP500), which doesn't aim to sell at downturns but minimizes loss through holding an uncorrelated triple-leveraged bond ETF
+* https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007
+* https://www.bogleheads.org/forum/viewtopic.php?f=10&t=288192
+
