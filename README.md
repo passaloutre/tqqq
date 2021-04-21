@@ -37,3 +37,5 @@ TODO
      - keep up with how much $$$ in account, how many shares, and share value
 
 3. Might be good to modularize the algorithm and the backtesting model rather than one script?
+
+4. Would love to deploy to a web server to send me daily emails with graphs and shit
