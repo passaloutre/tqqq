@@ -150,7 +150,7 @@ ax4.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
 plt.subplots_adjust(hspace = .0001)
 
 
-
+plt.show()
 # plt.savefig('/Users/rdchlmtr/tqqq.png')
 
 
