@@ -28,6 +28,7 @@ TODO
      - each day look at indicators from previous day close, determine if buy/sell
      - buy/sell at today's open price
      - keep up with how much $$$ in account, how many shares, and share value
+   * it might be worth testing against regular QQQ as well
 3. Might be good to modularize the algorithm and the backtesting model rather than one script?
 4. Would love to deploy to a web server to send me daily emails with graphs and shit
 5. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
