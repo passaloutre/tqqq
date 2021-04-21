@@ -39,4 +39,5 @@ Further Inspiration
 This is an approach to long-term holding UPRO (like TQQQ but for the whole SP500), which doesn't aim to sell at downturns but minimizes loss through holding an uncorrelated triple-leveraged bond ETF
 * https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007
 * https://www.bogleheads.org/forum/viewtopic.php?f=10&t=288192
-
+Here's a bunch of other triple-leveraged funds that we should gamble on
+* https://etfdb.com/themes/leveraged-3x-etfs/
