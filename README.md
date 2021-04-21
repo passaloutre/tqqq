@@ -39,3 +39,5 @@ TODO
 3. Might be good to modularize the algorithm and the backtesting model rather than one script?
 
 4. Would love to deploy to a web server to send me daily emails with graphs and shit
+
+5. STRETCH GOAL: STOCK TRADING DART BOARD
