@@ -46,3 +46,12 @@ This is an approach to long-term holding UPRO (like TQQQ but for the whole SP500
 Here's a bunch of other triple-leveraged funds that we should gamble on
 
 * https://etfdb.com/themes/leveraged-3x-etfs/
+
+Just to be clear, the github procedure is (?):
+
+* git pull https://github.com/passaloutre/tqqq
+* make whatever changes
+* git commit 'file.py' -m 'whatever message'
+* git push
+
+Is that correct? I tried as much today and it seems to have worked
