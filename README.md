@@ -11,7 +11,7 @@ Fixed backtesting model and bad news
 The model was using today's indicator to know whether to buy or sell today, but you can't know today's indicator until after today!
 Obviously if you know today's closing price before buying at todays opening price, you can turn $1k into $1M pretty easily
 I fixed it to use yesterday's indicator to buy/sell today, and, predictably, it does worse. Worse than just HODLing TQQQ, but better than HODLing regular QQQ.
-It does avoid pants-shitting drops like late 2018 or early 2020, where you lose half your money in a month but it is overconservative during some long rises, missing out on gains that overcome the drops
+It does avoid pants-shitting drops like late 2018 or early 2020, where you lose half your money in a month but it is overconservative during some long rises, missing out on gains that overcome the drops. HODLing TQQQ always wins unless you cherry pick the start date right before a big drop, and even then it still beats the algorithm within a couple years.
 
 We need to find a way to be a little riskier on the rise and a little tighter on the drops.
 
@@ -21,7 +21,7 @@ Possibilities:
 - hedging with TMF or SQQQ (see bogleheads below)
 - simpler moving-average calculations
 
-More bad news: NASDAQ dropped like 3% in half an hour today after Biden announce raising capital gains taxes
+The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $650k (makes me wish I had done this 10 years ago). Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
 
 !!!!!!!!!!!!!!!!!!
 
