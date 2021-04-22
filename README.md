@@ -5,35 +5,43 @@ Most of this was cobbled together from various stackoverflow examples
 
 tqqq_volatility.py is the main idea
 
-tqqq_optimizer.py is dumb and needs work (or it has served its purpose and we can just ignore it)
+Update 2021-04-22:
+
+  Fixed backtesting model and bad news
+  The model was using today's indicator to know whether to buy or sell today, but you can't know today's indicator until after today!
+  Obviously if you know today's closing price before buying at todays opening price, you can turn $1k into $1M pretty easily
+  I fixed it to use yesterday's indicator to buy/sell today, and, predictably, it does worse. Worse than just HODLing TQQQ, but better than HODLing regular QQQ.
+  It does avoid pants-shitting drops like late 2018 or early 2020, where you lose half your money in a month but it is overconservative during some long rises, missing out on gains that overcome the drops. HODLing TQQQ always wins unless you cherry pick the start date right before a big drop, and even then it still beats the algorithm within a couple years.
+
+  We need to find a way to be a little riskier on the rise and a little tighter on the drops.
+
+  Possibilities: 
+  - averaging into positions rather than simple on/off
+  - test it with just a trailing 10-20% stop loss, still need to find the right buy trigger
+  - hedging with TMF or SQQQ (see bogleheads below)
+  - simpler moving-average calculations
+
+  The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $650k (makes me wish I had done this 10 years ago). Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
+
+Update 2021-04-22 (later that same day):
+
+  I must still be doing something wrong, because available backtesting websites show HODLing $1k in TQQQ for 2011-2021 only earns $59k
+  
+  e.g. https://www.portfoliovisualizer.com/backtest-portfolio?s=y&timePeriod=4&startYear=2011&firstMonth=1&endYear=2021&lastMonth=12&calendarAligned=true&includeYTD=true&initialAmount=1000&annualOperation=0&annualAdjustment=0&inflationAdjusted=true&annualPercentage=0.0&frequency=4&rebalanceType=0&absoluteDeviation=5.0&relativeDeviation=25.0&reinvestDividends=false&showYield=false&showFactors=false&factorModel=3&portfolioNames=false&portfolioName1=Portfolio+1&portfolioName2=Portfolio+2&portfolioName3=Portfolio+3&symbol1=QQQ&allocation1_1=100&symbol2=TQQQ&allocation2_2=100
+  
+  I'm still determined there's a way to do this right
+  
+  Also TQQQ fell 5% in one hour today, because Joe Biden said he was going to raise capital gains taxes
+
 
 TODO
-1. I'd like to find a way to eliminate the single-day holds
-   * they rarely seem to make any money
-   * they're a lot to keep up with if manually trading
-     - brokers that offer APIs for trading (etrade, robinhood) require 2FA, so automated trading isn't 100% automated
-     - automating 1000s of dollars in a risky investment just makes me nervous anyways
-   * you can get in trouble for trading too many times in a single week
-   * we could maybe weed them out by analyzing the historical data
-     - e.g. maybe single-day holds are more likely to occur after many recent holds
-     - maybe they're more likely to pop up after long downturns?
-     - if we find a pattern, we could filter them out
-   * smaller par1 and par3 lead to shorter average hold times
-     - it might be worth looking into whether TQQQ and VXN need different MACD parameters
-     - larger par1 and par3 minimize gainz :( 
-2. Maybe it's better to find someone else who has already come up with a backtesting model
-   * I see several out there, but I'm not sure how to incorporate my indicators
-     - they mostly seem to be aimed at buying/holding long-term, not active trading
-   * it shouldn't be hard to make a simple model, it only needs
-     - each day look at indicators from previous day close, determine if buy/sell
-     - buy/sell at today's open price
-     - keep up with how much $$$ in account, how many shares, and share value
-   * it might be worth testing against regular QQQ as well
-3. Might be good to modularize the algorithm and the backtesting model rather than one script?
-4. Would love to deploy to a web server to send me daily emails with graphs and shit
-5. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
+1. fix the backtesting model or we'll never figure this out
+1. Might be good to modularize the algorithm and the backtesting model rather than one script?
+2. Would love to deploy to a web server to send me daily emails with graphs and shit
+3. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
    * SQQQ attempts to INVERSE TRIPLE QQQ (i.e. QQQ down 1%, SQQQ up 3%)
-7. STRETCH GOAL: STOCK TRADING DART BOARD
+4. Monte Carlo Sims - obviously not all possible market conditions are reflected in the <10 years of data available for TQQQ
+4. STRETCH GOAL: STOCK TRADING DART BOARD
 
 Further Inspiration
 
