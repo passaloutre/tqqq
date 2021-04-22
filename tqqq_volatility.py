@@ -1,9 +1,17 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 21:23:24 2021
+
+@author: rdchlmtr
+"""
 import yfinance as yf
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pandas_market_calendars as mcal
 import matplotlib.dates as mdates
+import datetime
 import seaborn as sns
 
 sns.set_theme()
@@ -12,7 +20,7 @@ plt.close('all')
 #%% parameters
 
 start_date = '2012-01-01'
-end_date = '2022-01-01'
+end_date = '2013-01-01'
 
 par1 = 2
 par2 = 18
@@ -62,46 +70,45 @@ else:
     
 buy = buy.reshape((len(buy)//2,2)) # reshape the array so buy dates in first column, sell dates in second column
 buy_times = np.array(t.index)[buy] # convert to actual dates instead of indices
-holds = buy_times[:,1] - buy_times[:,0] # how long each hold is
+holds = (buy_times[:,1] - buy_times[:,0]) / datetime.timedelta(days=1) # how long each hold is
 avg_hold_time = np.mean(holds)
-days = avg_hold_time.total_seconds() /60/60/24 # get hold times in float(days)
 
 #%% backtesting model
 
-price = t.Open.values # we buy at today's price, algorithm uses yesterdays close price
+open_price = t.Open.values # we buy at today's price, algorithm uses yesterdays close price
+close_price = t.Close.values
 balance = np.zeros(len(t))
 shares = np.zeros(len(t))
 value = np.zeros(len(t))
+total = np.zeros(len(t))
 good = t.good & v.good
 balance[0] = start_money
+total[0] = start_money
 
 
 for i in range(1, len(t)):
     if good[i] > good[i-1]: # if condition changes from bad to good
-        new_shares = balance[i-1] // price[i] # how many shares can we buy at today's price with yesterday's account balance
-        new_balance = balance[i-1] % price[i] # remainder in account after buying shares
-        shares[i] = new_shares
-        balance[i] = new_balance
+        shares[i] = balance[i-1] // open_price[i] # how many shares can we buy at today's price with yesterday's account balance
+        balance[i] = balance[i-1] % open_price[i] # remainder in account after buying shares
     elif good[i] == good[i-1]: # if condition doesn't change
         shares[i] = shares[i-1]
         balance[i] = balance[i-1]
     elif good[i] < good[i-1]: # if condition changes from good to bad
-        new_shares = 0
-        new_balance = shares[i-1] * price[i] # sell yesterday's shares at today's price
-        shares[i] = new_shares
-        balance[i] = balance[i-1] + new_balance # add sale total to existing account balance
-    value[i] = shares[i] * price[i]
+        shares[i] = 0
+        balance[i] = shares[i-1] * open_price[i] + balance[i-1]
+    value[i] = shares[i] * close_price[i]
+    total[i] = value[i] + balance[i]
     
-model = pd.DataFrame({'value':value,'balance':balance}, index=nyse_dti)
-model['worth'] = model.value + model.balance # total worth each day (value of shares + value in account)
-initial = start_money//price[0] # how many shares could we have bought on day 1
-model['hodl'] = price*initial + start_money - price[0]*initial # if stock was bought on day one and held
+model = pd.DataFrame({'balance':balance,'shares':shares,'value':value,'total':total}, index=nyse_dti)
+# model['worth'] = model.value + model.balance # total worth each day (value of shares + value in account)
+initial = start_money//open_price[0] # how many shares could we have bought on day 1
+model['hodl'] = open_price*initial + start_money - open_price[0]*initial # if stock was bought on day one and held
 
-algo_gain = model.worth[-1] - model.worth[0] # net gain over time domain
+algo_gain = model.total[-1] - model.total[0] # net gain over time domain
 hodl_gain = model.hodl[-1] - model.hodl[0]
 
-net = model.worth[-1] - model.hodl[-1] # improvement of model over hodling
-print('{:.0f}'.format(net)) # just some visual feedback
+net = model.total[-1] - model.hodl[-1] # improvement of model over hodling
+print('{:.0f}'.format(total[-1])) # just some visual feedback
 
 #%%
 
@@ -118,7 +125,7 @@ for i in range(len(buy_times)):
     ax1.axvspan(buy_times[i,0], buy_times[i,1], facecolor='g', alpha=0.2)
 plt.legend(loc=2)
 ax1b.xaxis.set_major_formatter(mdates.DateFormatter(''))
-plt.title('ALGO Gain: ${:,.2f}\nHODL Gain: ${:,.2f}\nAvg. Hold Time: {:.1f} days'.format(algo_gain, hodl_gain, days))
+plt.title('ALGO Gain: ${:,.2f}\nHODL Gain: ${:,.2f}\nAvg. Hold Time: {:.1f} days'.format(algo_gain, hodl_gain, avg_hold_time))
 
 
 ax2 = plt.subplot(4, 1, 2)
@@ -144,7 +151,7 @@ ax3.xaxis.set_major_formatter(mdates.DateFormatter(''))
 
 ax4 = plt.subplot(4,1,4)
 plt.plot(model.hodl, label='HODL')
-plt.plot(model.worth, label='ALGO')
+plt.plot(model.total, label='ALGO')
 plt.legend(loc=2)
 ax4.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
         
