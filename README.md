@@ -55,6 +55,10 @@ Here's a bunch of other triple-leveraged funds that we should gamble on
 
 * https://etfdb.com/themes/leveraged-3x-etfs/
 
+This Canadian dude has something similar going on. He doesn't give up his algorithm, but he does suggest several places he's getting his indicators (scroll down):
+
+https://www.bredincapital.com/weeklycommentary/2-13-2021-t5cr8-agakj-j5l2n-2fxjd-te9xr-8g4tx-hcknr-h5apr-fjnpk
+
 Just to be clear, the github procedure is (?):
 
 * git pull https://github.com/passaloutre/tqqq
