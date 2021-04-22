@@ -19,14 +19,20 @@ plt.close('all')
 
 #%% parameters
 
-start_date = '2012-01-01'
-end_date = '2013-01-01'
+start_date = '2016-01-01'
+end_date = '2019-01-01'
 
-par1 = 2
-par2 = 18
-par3 = 2
+# parameters for tqqq
+par1 = 5
+par2 = 35
+par3 = 5
 
-start_money = 1000
+# parameters for vxn
+par4 = 12
+par5 = 26
+par6 = 9
+
+start_money = 10000
 
 #%% gathering, analyzing data
 
@@ -51,17 +57,20 @@ t['exp3'] = t.macd.ewm(span=par3, adjust=False).mean()
 t['good'] = t.macd > t.exp3
 t['zeros'] = np.zeros(len(t.macd))
 
-exp1 = v.Close.ewm(span=par1, adjust=False).mean()
-exp2 = v.Close.ewm(span=par2, adjust=False).mean()
+exp1 = v.Close.ewm(span=par4, adjust=False).mean()
+exp2 = v.Close.ewm(span=par5, adjust=False).mean()
 v['macd'] = exp1-exp2
-v['exp3'] = v.macd.ewm(span=par3, adjust=False).mean()
+v['exp3'] = v.macd.ewm(span=par6, adjust=False).mean()
 v['good'] = v.macd < v.exp3
 v['zeros'] = np.zeros(len(v.macd))
+
+# good = t.good
+good = (t.good & v.good)
 
 # theres probably a better way to do all of the below
 # i wanted two columns of dates, the first column is the dates you should buying, the second column is dates you should sell, so each row brackets the "good" periods
 # this makes the green bands in the figure easier to map out
-buy = np.where(np.diff(t.good & v.good))[0] # record indices where (t.good & v.good) condition changes
+buy = np.where(np.diff(good ))[0] # record indices where (t.good & v.good) condition changes
 if len(buy) % 2 != 0: # if you are currently in a "good" period, then the final bracket is unclosed
     buy = np.append(buy, -1) # this just adds the final index to close the last bracket
     action = 'BUY' # this just tells you if we're currently (i.e. on the end_date) in a BUY or SELL scenario, I was using it in the figure title, but not anymore
@@ -81,19 +90,19 @@ balance = np.zeros(len(t))
 shares = np.zeros(len(t))
 value = np.zeros(len(t))
 total = np.zeros(len(t))
-good = t.good & v.good
+
 balance[0] = start_money
 total[0] = start_money
 
 
 for i in range(1, len(t)):
-    if good[i] > good[i-1]: # if condition changes from bad to good
+    if good[i-1] > good[i-2]: # if condition changes from bad to good
         shares[i] = balance[i-1] // open_price[i] # how many shares can we buy at today's price with yesterday's account balance
         balance[i] = balance[i-1] % open_price[i] # remainder in account after buying shares
-    elif good[i] == good[i-1]: # if condition doesn't change
+    elif good[i-1] == good[i-2]: # if condition doesn't change
         shares[i] = shares[i-1]
         balance[i] = balance[i-1]
-    elif good[i] < good[i-1]: # if condition changes from good to bad
+    elif good[i-1] < good[i-2]: # if condition changes from good to bad
         shares[i] = 0
         balance[i] = shares[i-1] * open_price[i] + balance[i-1]
     value[i] = shares[i] * close_price[i]
@@ -102,7 +111,7 @@ for i in range(1, len(t)):
 model = pd.DataFrame({'balance':balance,'shares':shares,'value':value,'total':total}, index=nyse_dti)
 # model['worth'] = model.value + model.balance # total worth each day (value of shares + value in account)
 initial = start_money//open_price[0] # how many shares could we have bought on day 1
-model['hodl'] = open_price*initial + start_money - open_price[0]*initial # if stock was bought on day one and held
+model['hodl'] = close_price*initial + start_money - open_price[0]*initial # if stock was bought on day one and held
 
 algo_gain = model.total[-1] - model.total[0] # net gain over time domain
 hodl_gain = model.hodl[-1] - model.hodl[0]
