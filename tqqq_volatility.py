@@ -19,8 +19,8 @@ plt.close('all')
 
 #%% parameters
 
-start_date = '2016-01-01'
-end_date = '2019-01-01'
+start_date = '2021-01-01'
+end_date = '2022-01-01'
 
 # parameters for tqqq
 par1 = 5
