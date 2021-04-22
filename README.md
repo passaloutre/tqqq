@@ -6,6 +6,7 @@ Most of this was cobbled together from various stackoverflow examples
 tqqq_volatility.py is the main idea
 
 !!!!2021-04-22!!!!
+
 Fixed backtesting model and bad news
 The model was using today's indicator to know whether to buy or sell today, but you can't know today's indicator until after today!
 Obviously if you know today's closing price before buying at todays opening price, you can turn $1k into $1M pretty easily
@@ -21,6 +22,7 @@ Possibilities:
 - simpler moving-average calculations
 
 More bad news: NASDAQ dropped like 3% in half an hour today after Biden announce raising capital gains taxes
+
 !!!!!!!!!!!!!!!!!!
 
 TODO
