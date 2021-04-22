@@ -31,7 +31,7 @@ Update 2021-04-22 (later that same day):
   
   I'm still determined there's a way to do this right
   
-  Also TQQQ fell 3% today, because Joe Biden said he was going to raise capital gains taxes
+  Also TQQQ fell 5% in one hour today, because Joe Biden said he was going to raise capital gains taxes
 
 
 TODO
