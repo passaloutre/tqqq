@@ -30,6 +30,7 @@ TODO
 2. Would love to deploy to a web server to send me daily emails with graphs and shit
 3. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
    * SQQQ attempts to INVERSE TRIPLE QQQ (i.e. QQQ down 1%, SQQQ up 3%)
+4. Monte Carlo Sims - obviously not all possible market conditions are reflected in the <10 years of data available for TQQQ
 4. STRETCH GOAL: STOCK TRADING DART BOARD
 
 Further Inspiration
