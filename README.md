@@ -17,7 +17,7 @@ We need to find a way to be a little riskier on the rise and a little tighter on
 
 Possibilities: 
 - averaging into positions rather than simple on/off
-- test it with just a trailing 20% stop loss, still need to find the right buy trigger
+- test it with just a trailing 10-20% stop loss, still need to find the right buy trigger
 - hedging with TMF or SQQQ (see bogleheads below)
 - simpler moving-average calculations
 
