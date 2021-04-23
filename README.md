@@ -28,7 +28,7 @@ Update 2021-04-22:
   - hedging with TMF or SQQQ (see below)
   - simpler moving-average calculations
 
-  The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $57k. Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
+  The good news (for making money at least) is that HODLing $1k in TQQQ from beginning of 2011 through end of 2020 (even with the covid drop) earns over $57k. Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
 
 Update 2021-04-23
 
