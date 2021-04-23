@@ -18,7 +18,10 @@ Update 2021-04-22:
   Possibilities: 
   - averaging into positions rather than simple on/off
   - test it with just a trailing 10-20% stop loss, still need to find the right buy trigger
-  - hedging with TMF or SQQQ (see bogleheads below)
+  - limit orders instead of market orders
+  - use opening price (or even premarket) for indicators, it's more up to date than yesterday's close
+  - along the same lines, trading in the middle of the day rather than the beginning
+  - hedging with TMF or SQQQ (see below)
   - simpler moving-average calculations
 
   The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $650k (makes me wish I had done this 10 years ago). Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
