@@ -33,6 +33,12 @@ Update 2021-04-22 (later that same day):
   
   Also TQQQ fell 5% in one hour today, because Joe Biden said he was going to raise capital gains taxes
 
+Update 2021-04-23
+
+This could be of some use: https://www.reddit.com/r/stocks/comments/mx27u0/move_over_bloomberg_terminal_here_comes_gamestonk/
+
+Also I got my second vaccination today
+
 
 TODO
 1. fix the backtesting model or we'll never figure this out
