@@ -24,17 +24,7 @@ Update 2021-04-22:
   - hedging with TMF or SQQQ (see below)
   - simpler moving-average calculations
 
-  The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $67k. Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
-
-Update 2021-04-22 (later that same day):
-
-  I must still be doing something wrong, because available backtesting websites show HODLing $1k in TQQQ for 2011-2021 only earns $59k
-  
-  e.g. https://www.portfoliovisualizer.com/backtest-portfolio?s=y&timePeriod=4&startYear=2011&firstMonth=1&endYear=2021&lastMonth=12&calendarAligned=true&includeYTD=true&initialAmount=1000&annualOperation=0&annualAdjustment=0&inflationAdjusted=true&annualPercentage=0.0&frequency=4&rebalanceType=0&absoluteDeviation=5.0&relativeDeviation=25.0&reinvestDividends=false&showYield=false&showFactors=false&factorModel=3&portfolioNames=false&portfolioName1=Portfolio+1&portfolioName2=Portfolio+2&portfolioName3=Portfolio+3&symbol1=QQQ&allocation1_1=100&symbol2=TQQQ&allocation2_2=100
-  
-  I'm still determined there's a way to do this right
-  
-  Also TQQQ fell 5% in one hour today, because Joe Biden said he was going to raise capital gains taxes
+  The good news (for making money at least) is that HODLing $1k in TQQQ from 2011 through today (even with the covid drop) earns over $57k. Still, the last 10 years have been anomalously good for the NASDAQ, so maybe it's not surprising.
 
 Update 2021-04-23
 
