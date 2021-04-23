@@ -45,7 +45,7 @@ TODO
 3. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
    * SQQQ attempts to INVERSE TRIPLE QQQ (i.e. QQQ down 1%, SQQQ up 3%)
 4. Monte Carlo Sims - obviously not all possible market conditions are reflected in the <10 years of data available for TQQQ
-9. Automated trading? Makes me nervous but E-Trade and Robinhood have APIs for trading. They both require 2FA, so it's not completely automated.
+9. Automated trading? Makes me nervous letting a computer spend 1000s of my dollars, but E-Trade and Robinhood have APIs for trading. They both require 2FA, so it's not completely automated.
 4. STRETCH GOAL: STOCK TRADING DART BOARD
 
 Further Inspiration
