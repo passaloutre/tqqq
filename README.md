@@ -21,7 +21,7 @@ Update 2021-04-22:
 
   Possibilities: 
   - averaging into positions rather than simple on/off
-  - test it with just a trailing 10-20% stop loss, still need to find the right buy trigger
+  - test it with just a trailing 10-20% stop loss, still need to find the right trigger to buy in again
   - limit orders instead of market orders
   - use opening price (or even premarket) for indicators, it's more up to date than yesterday's close
   - along the same lines, trading in the middle of the day rather than the beginning
