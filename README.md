@@ -35,6 +35,7 @@ Also I got my second vaccination today
 
 TODO
 1. Include dividends/expense ratio in backtest
+1. Come up with a cool name
 1. Might be good to modularize the algorithm and the backtesting model rather than one script?
 2. Would love to deploy to a web server to send me daily emails with graphs and shit
 3. The strategy could be enhanced (and definitely up the danger factor) buying SQQQ when selling TQQQ
