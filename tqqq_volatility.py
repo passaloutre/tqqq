@@ -39,7 +39,7 @@ start_money = 10000
 tqqq = yf.download(tickers='TQQQ', start=start_date, end=end_date)
 vxn = yf.download(tickers='^VXN', start=start_date, end=end_date)
 
-# this nyse stuff below makes the X-axis in the figures look better, since no trading on weekends, maybe we can ditch it if matplotlib is smart enough, but someone on stackoverflow said you need it
+# something breaks if you don't do this nyse stuff below, but I don't remember what. Something about no trading on weekends, maybe, but someone on stackoverflow said you need it and it works...
 
 nyse = mcal.get_calendar('NYSE')
 nyse_schedule = nyse.schedule(start_date=tqqq.index[0], end_date=tqqq.index[-1])
